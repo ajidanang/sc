@@ -4,7 +4,7 @@ green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- ifconfig.me/ip);
 echo "Checking VPS"
-IZIN=$( curl http://147.139.194.54:81/aksesvpstoken | grep $MYIP )
+IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
@@ -156,4 +156,3 @@ menu
 echo "Please enter an correct number"
 ;;
 esac
-

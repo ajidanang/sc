@@ -2,9 +2,9 @@
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
-MYIP=$(wget -qO- ifconfig.me/ip);
+MYIP=$(wget -qO- ipv4.icanhazip.com);
 echo "Checking VPS"
-IZIN=$( curl http://147.139.194.54:81/aksesvpstoken | grep $MYIP )
+IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
@@ -15,7 +15,7 @@ fi
 clear
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP" = "" ]]; then
-PUBLIC_IP=$(wget -qO- ifconfig.me/ip);
+PUBLIC_IP=$(wget -qO- ipv4.icanhazip.com);
 else
 PUBLIC_IP=$IP
 fi

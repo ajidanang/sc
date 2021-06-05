@@ -20,7 +20,7 @@ commonname=www.lestakun.tech
 email=lesta@lestakun.tech
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "http://147.139.194.54:81/sc/password"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/lesta-1/sc/main/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -43,7 +43,7 @@ WantedBy=multi-user.target
 END
 
 # install edu
-wget -q -O /usr/local/bin/edu-proxy http://147.139.194.54:81/sc/edu.py
+wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/edu.py
 chmod +x /usr/local/bin/edu-proxy
 
 # Edit file /etc/systemd/system/wstunnel.service
@@ -111,7 +111,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "By:RPJWONOSOBO" >> .profile
+echo "By:RADENPANCAL" >> .profile
 
 #changehostname
 hostnamectl set-hostname RPJ
@@ -121,14 +121,14 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "http://147.139.194.54:81/sc/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/lesta-1/sc/main/nginx.conf"
 mkdir -p /home/vps/public_html
-wget -O /etc/nginx/conf.d/vps.conf "http://147.139.194.54:81/sc/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/lesta-1/sc/main/vps.conf"
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "http://147.139.194.54:81/sc/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/lesta-1/sc/main/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -158,7 +158,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "http://147.139.194.54:81/sc/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/lesta-1/sc/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -212,7 +212,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #OpenVPN
-wget http://147.139.194.54:81/sc/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/lesta-1/sc/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -267,36 +267,36 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "http://147.139.194.54:81/sc/add-host.sh"
-wget -O about "http://147.139.194.54:81/sc/about.sh"
-wget -O menu "http://147.139.194.54:81/sc/menu.sh"
-wget -O usernew "http://147.139.194.54:81/sc/usernew.sh"
-wget -O trial "http://147.139.194.54:81/sc/trial.sh"
-wget -O hapus "http://147.139.194.54:81/sc/hapus.sh"
-wget -O member "http://147.139.194.54:81/sc/member.sh"
-wget -O delete "http://147.139.194.54:81/sc/delete.sh"
-wget -O cek "http://147.139.194.54:81/sc/cek.sh"
-wget -O restart "http://147.139.194.54:81/sc/restart.sh"
-wget -O speedtest "http://147.139.194.54:81/sc/speedtest_cli.py"
-wget -O info "http://147.139.194.54:81/sc/info.sh"
-wget -O ram "http://147.139.194.54:81/sc/ram.sh"
-wget -O renew "http://147.139.194.54:81/sc/renew.sh"
-wget -O autokill "http://147.139.194.54:81/sc/autokill.sh"
-wget -O ceklim "http://147.139.194.54:81/sc/ceklim.sh"
-wget -O tendang "http://147.139.194.54:81/sc/tendang.sh"
-wget -O clear-log "http://147.139.194.54:81/sc/clear-log.sh"
-wget -O change-port "http://147.139.194.54:81/sc/change.sh"
-wget -O port-ovpn "http://147.139.194.54:81/sc/port-ovpn.sh"
-wget -O port-ssl "http://147.139.194.54:81/sc/port-ssl.sh"
-wget -O port-wg "http://147.139.194.54:81/sc/port-wg.sh"
-wget -O port-tr "http://147.139.194.54:81/sc/port-tr.sh"
-wget -O port-sstp "http://147.139.194.54:81/sc/port-sstp.sh"
-wget -O port-squid "http://147.139.194.54:81/sc/port-squid.sh"
-wget -O port-ws "http://147.139.194.54:81/sc/port-ws.sh"
-wget -O port-vless "http://147.139.194.54:81/sc/port-vless.sh"
-wget -O wbmn "http://147.139.194.54:81/sc/webmin.sh"
-wget -O xp "http://147.139.194.54:81/sc/xp.sh"
-wget -O update "http://147.139.194.54:81/sc/update.sh"
+wget -O add-host "https://raw.githubusercontent.com/lesta-1/sc/main/add-host.sh"
+wget -O about "https://raw.githubusercontent.com/lesta-1/sc/main/about.sh"
+wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/lesta-1/sc/main/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/lesta-1/sc/main/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/lesta-1/sc/main/hapus.sh"
+wget -O member "https://raw.githubusercontent.com/lesta-1/sc/main/member.sh"
+wget -O delete "https://raw.githubusercontent.com/lesta-1/sc/main/delete.sh"
+wget -O cek "https://raw.githubusercontent.com/lesta-1/sc/main/cek.sh"
+wget -O restart "https://raw.githubusercontent.com/lesta-1/sc/main/restart.sh"
+wget -O speedtest "https://raw.githubusercontent.com/lesta-1/sc/main/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/lesta-1/sc/main/info.sh"
+wget -O ram "https://raw.githubusercontent.com/lesta-1/sc/main/ram.sh"
+wget -O renew "https://raw.githubusercontent.com/lesta-1/sc/main/renew.sh"
+wget -O autokill "https://raw.githubusercontent.com/lesta-1/sc/main/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/lesta-1/sc/main/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/lesta-1/sc/main/tendang.sh"
+wget -O clear-log "https://raw.githubusercontent.com/lesta-1/sc/main/clear-log.sh"
+wget -O change-port "https://raw.githubusercontent.com/lesta-1/sc/main/change.sh"
+wget -O port-ovpn "https://raw.githubusercontent.com/lesta-1/sc/main/port-ovpn.sh"
+wget -O port-ssl "https://raw.githubusercontent.com/lesta-1/sc/main/port-ssl.sh"
+wget -O port-wg "https://raw.githubusercontent.com/lesta-1/sc/main/port-wg.sh"
+wget -O port-tr "https://raw.githubusercontent.com/lesta-1/sc/main/port-tr.sh"
+wget -O port-sstp "https://raw.githubusercontent.com/lesta-1/sc/main/port-sstp.sh"
+wget -O port-squid "https://raw.githubusercontent.com/lesta-1/sc/main/port-squid.sh"
+wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
+wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless.sh"
+wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
+wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
+wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
 chmod +x add-host
 chmod +x menu
 chmod +x usernew

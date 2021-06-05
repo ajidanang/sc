@@ -10,7 +10,7 @@ fi
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
-MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP=$(wget -qO- https://icanhazip.com/);
 IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
@@ -55,7 +55,7 @@ rm -f /root/cf.sh
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
 Description=autosetting
-Documentation=https://vpnstores.net
+Documentation=http://akses.rpj08.my.id
 
 [Service]
 Type=oneshot

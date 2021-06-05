@@ -4,7 +4,7 @@ green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- ifconfig.me/ip);
 echo "Checking VPS"
-IZIN=$( curl http://147.139.194.54:81/aksesvpstoken | grep $MYIP )
+IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
@@ -45,10 +45,17 @@ echo -e "OpenSSH        : 22"
 echo -e "Dropbear       : 109, 143"
 echo -e "SSL/TLS        :$ssl"
 echo -e "Port Squid     :$sqd"
-echo -e "OpenVPN        : TCP $ovpn http://$IP:81/client-tcp-$ovpn.ovpn"
-echo -e "OpenVPN        : UDP $ovpn2 http://$IP:81/client-udp-$ovpn2.ovpn"
+echo -e "Port CDN       : 2082"
+echo -e "OpenVPN        : TCP $ovpn http://$IP:81/client-tcp-1194.ovpn"
+echo -e "OpenVPN        : UDP $ovpn2 http://$IP:81/client-udp-2200.ovpn"
 echo -e "OpenVPN        : SSL 442 http://$IP:81/client-tcp-ssl.ovpn"
 echo -e "badvpn         : 7100-7300"
 echo -e "==============================="
-echo -e "Aktif Sampai   : $exp"
-
+echo -e "PAYLOAD"                                                          
+echo -e "GET / HTTP/1.1[crlf]Host: $domain[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "==============================="
+echo -e "SETING HOST SSH"               
+echo -e "bimbel.ruangguru.com:2082@$Login:$Pass"
+echo -e "==============================="
+echo -e "Expired On     : $exp"
+echo -e "Script Install  : RPJ WONOSOBO"

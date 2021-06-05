@@ -1,7 +1,7 @@
 #!/bin/bash
 curl https://rclone.org/install.sh | bash
 printf "q\n" | rclone config
-wget -O /root/.config/rclone/rclone.conf "http://147.139.194.54:81/sc/rclone.conf"
+wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/lesta-1/sc/main/rclone.conf"
 git clone  https://github.com/magnific0/wondershaper.git
 cd wondershaper
 make install
@@ -26,12 +26,12 @@ logfile ~/.msmtp.log
 EOF
 chown -R www-data:www-data /etc/msmtprc
 cd /usr/bin
-wget -O autobackup "http://147.139.194.54:81/sc/autobackup.sh"
-wget -O backup "http://147.139.194.54:81/sc/backup.sh"
-wget -O bckp "http://147.139.194.54:81/sc/bckp.sh"
-wget -O restore "http://147.139.194.54:81/sc/restore.sh"
-wget -O strt "http://147.139.194.54:81/sc/strt.sh"
-wget -O limit-speed "http://147.139.194.54:81/sc/limit-speed.sh"
+wget -O autobackup "https://raw.githubusercontent.com/lesta-1/sc/main/autobackup.sh"
+wget -O backup "https://raw.githubusercontent.com/lesta-1/sc/main/backup.sh"
+wget -O bckp "https://raw.githubusercontent.com/lesta-1/sc/main/bckp.sh"
+wget -O restore "https://raw.githubusercontent.com/lesta-1/sc/main/restore.sh"
+wget -O strt "https://raw.githubusercontent.com/lesta-1/sc/main/strt.sh"
+wget -O limit-speed "https://raw.githubusercontent.com/lesta-1/sc/main/limit-speed.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x bckp

@@ -11,7 +11,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- ifconfig.me/ip);
-IZIN=$( curl http://147.139.194.54:81/aksesvpstoken | grep $MYIP )
+IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
@@ -29,25 +29,25 @@ exit 0
 fi
 echo "Start Update"
 cd /usr/bin
-wget -O menu "http://147.139.194.54:81/sc/menu.sh"
-wget -O usernew "http://147.139.194.54:81/sc/usernew.sh"
-wget -O trial "http://147.139.194.54:81/sc/trial.sh"
-wget -O change-port "http://147.139.194.54:81/sc/change.sh"
-wget -O port-ovpn "http://147.139.194.54:81/sc/port-ovpn.sh"
-wget -O port-ssl "http://147.139.194.54:81/sc/port-ssl.sh"
-wget -O port-wg "http://147.139.194.54:81/sc/port-wg.sh"
-wget -O port-tr "http://147.139.194.54:81/sc/port-tr.sh"
-wget -O port-sstp "http://147.139.194.54:81/sc/port-sstp.sh"
-wget -O port-squid "http://147.139.194.54:81/sc/port-squid.sh"
-wget -O port-ws "http://147.139.194.54:81/sc/port-ws.sh"
-wget -O port-vless "http://147.139.194.54:81/sc/port-vless.sh"
-wget -O wbmn "http://147.139.194.54:81/sc/webmin.sh"
-wget -O xp "http://147.139.194.54:81/sc/xp.sh"
-wget -O limit-speed "http://147.139.194.54:81/sc/limit-speed.sh"
-wget -O add-sstp "http://147.139.194.54:81/sc/add-sstp.sh"
-wget -O add-ws "http://147.139.194.54:81/sc/add-ws.sh"
-wget -O add-vless "http://147.139.194.54:81/sc/add-vless.sh"
-wget -O add-tr "http://147.139.194.54:81/sc/add-tr.sh"
+wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/lesta-1/sc/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/lesta-1/sc/trial.sh"
+wget -O change-port "https://raw.githubusercontent.com/lesta-1/sc/change.sh"
+wget -O port-ovpn "https://raw.githubusercontent.com/lesta-1/sc/port-ovpn.sh"
+wget -O port-ssl "https://raw.githubusercontent.com/lesta-1/sc/port-ssl.sh"
+wget -O port-wg "https://raw.githubusercontent.com/lesta-1/sc/port-wg.sh"
+wget -O port-tr "https://raw.githubusercontent.com/lesta-1/sc/port-tr.sh"
+wget -O port-sstp "https://raw.githubusercontent.com/lesta-1/sc/port-sstp.sh"
+wget -O port-squid "https://raw.githubusercontent.com/lesta-1/sc/port-squid.sh"
+wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/port-ws.sh"
+wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/port-vless.sh"
+wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/webmin.sh"
+wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/xp.sh"
+wget -O limit-speed "https://raw.githubusercontent.com/lesta-1/sc/limit-speed.sh"
+wget -O add-sstp "https://raw.githubusercontent.com/lesta-1/sc/add-sstp.sh"
+wget -O add-ws "https://raw.githubusercontent.com/lesta-1/sc/add-ws.sh"
+wget -O add-vless "https://raw.githubusercontent.com/lesta-1/sc/add-vless.sh"
+wget -O add-tr "https://raw.githubusercontent.com/lesta-1/sc/add-tr.sh"
 chmod +x change-port
 chmod +x port-ovpn
 chmod +x port-ssl
