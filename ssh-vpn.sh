@@ -42,27 +42,35 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 END
 
-# install edu
-wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/edu.py
+# Getting Proxy Template
+wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
 chmod +x /usr/local/bin/edu-proxy
 
-# Edit file /etc/systemd/system/wstunnel.service
-cat > /etc/systemd/system/wstunnel.service <<-END
+# Installing Service
+cat > /etc/systemd/system/edu-proxy.service << END
 [Unit]
-Description=/etc/bin/wstunnel
-ConditionPathExists=/etc/bin/wstunnel
+Description=Python Edu Proxy By Radenpancal Service
+Documentation=https://vpnstores.net
+After=network.target nss-lookup.target
+
 [Service]
-ExecStart=usr/bin/wstunnel -s 2082
-Restart=always
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=wstunnel
-User=nobody
-Group=nogroup
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 END
+
+systemctl daemon-reload
+systemctl enable edu-proxy
+systemctl restart edu-proxy
+
+clear
 
 # nano /etc/bin/wstunnel
 cat > /etc/bin/wstunnel <<-END
@@ -111,10 +119,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "By:RADENPANCAL" >> .profile
-
-#changehostname
-hostnamectl set-hostname RPJ
+echo "echo by RADENPANCAL" >> .profile
 
 # install webserver
 apt -y install nginx
@@ -133,6 +138,7 @@ chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500' /etc/bin/wstunnel
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
