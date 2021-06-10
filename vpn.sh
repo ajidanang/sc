@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# By RPJ WONOSOBO
+# By Rpj Wonosobo
 # ==================================================
 
 # initialisasi var
