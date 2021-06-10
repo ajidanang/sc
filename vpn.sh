@@ -138,4 +138,3 @@ systemctl start openvpn
 # Delete script
 history -c
 rm -f /root/vpn.sh
-
