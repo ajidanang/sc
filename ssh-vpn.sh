@@ -46,6 +46,10 @@ END
 wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
 chmod +x /usr/local/bin/edu-proxy
 
+# Getting Edu Template
+wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/lesta-1/sc/main/edu-templated.py
+chmod +x /usr/local/bin/edu-ovpn
+
 # Installing Service
 cat > /etc/systemd/system/edu-proxy.service << END
 [Unit]
@@ -69,6 +73,8 @@ END
 systemctl daemon-reload
 systemctl enable edu-proxy
 systemctl restart edu-proxy
+systemctl enable edu-ovpn
+systemctl restart edu-ovpn
 
 clear
 
