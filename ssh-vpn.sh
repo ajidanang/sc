@@ -45,13 +45,12 @@ END
 # Getting Proxy Template
 wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
 chmod +x /usr/local/bin/edu-proxy
-
-# Getting Edu Template
 wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/lesta-1/sc/main/edu-templated.py
 chmod +x /usr/local/bin/edu-ovpn
 
 # Installing Service
 cat > /etc/systemd/system/edu-proxy.service << END
+cat > /etc/systemd/system/edu-ovpn.service << END
 [Unit]
 Description=Python Edu Proxy By Radenpancal Service
 Documentation=https://vpnstores.net
