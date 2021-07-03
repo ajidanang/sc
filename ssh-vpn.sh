@@ -64,6 +64,7 @@ CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-ovpn 2084
 Restart=on-failure
 
 [Install]
