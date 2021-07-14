@@ -1,23 +1,22 @@
 # sc
-# Cara memperbarui kernel di debian 10 ke 5.10
-
-daftar edit:
+# How to update kernel in debian 10 to 5.10
+edit list:
 nano /etc/apt/sources.list
-lalu, tambahkan ini:
+then, add this :
 deb https://deb.debian.org/debian buster-backports main
 ctrl+x
-kamu
-memasukkan
-kemudian, perbarui repo:
-pembaruan yang tepat
-pergi ke daftar pencarian:
-pencarian apt-cache linux-image
-Install:
+y
+enter
+then, update repo:
+apt update
+go to searchlist:
+apt-cache search linux-image
+install:
 apt install linux-image-blablabla
-pilih versi kernel yang Anda inginkan, tetapi saya tidak merekomendasikan untuk versi cloud dan rt.
-setelah instal, lalu reboot.
-mulai ulang
-login lagi ke vps Anda dan ketik
+choose kernel version what you want, but i not recommended for cloud and rt version.
+after install, then reboot.
+reboot
+login again to your vps and type
 uname -r
-Jika kernel diubah maka berfungsi.
-setelah ini Anda dapat menginstal autoscript
+If kernel is change then its work.
+after this you can install autoscript
