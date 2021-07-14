@@ -89,6 +89,9 @@ exit 0
 END
 
 # Ubah izin akses
+chmod +x /etc/bin/wstunnel
+
+# Ubah izin akses
 chmod +x /etc/rc.local
 
 # enable rc local
