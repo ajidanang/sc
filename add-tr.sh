@@ -35,7 +35,7 @@ read -p "Expired (days): " masaaktif
 sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan/akun.conf
-echo -e "### $user $exp" >> /etc/trojan-go
+echo -e "### $user $exp" >> /etc/trojan-go/config.json
 systemctl restart trojan
 systemctl restart trojan-go
 trojanlink="trojan://${user}@${domain}:${tr}"
