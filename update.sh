@@ -25,17 +25,17 @@ apt-get install ruby
 gem install lolcat
 apt-get install figlet
 cd /usr/bin
-wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/main/bannerku"
-wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/menu.sh"
-wget -O l2tp "https://raw.githubusercontent.com/lesta-1/sc/main/l2tp.sh"
-wget -O ssh "https://raw.githubusercontent.com/lesta-1/sc/main/ssh.sh"
-wget -O ssssr "https://raw.githubusercontent.com/lesta-1/sc/main/ssssr.sh"
-wget -O sstpp "https://raw.githubusercontent.com/lesta-1/sc/main/sstpp.sh"
-wget -O trojaan "https://raw.githubusercontent.com/lesta-1/sc/main/trojaan.sh"
-wget -O v2raay "https://raw.githubusercontent.com/lesta-1/sc/main/v2raay.sh"
-wget -O wgr "https://raw.githubusercontent.com/lesta-1/sc/main/wgr.sh"
-wget -O vless "https://raw.githubusercontent.com/lesta-1/sc/main/vless.sh"
-wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/main/bbr.sh"
+wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/update/main/bannerku"
+wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/update/main/menu.sh"
+wget -O l2tp "https://raw.githubusercontent.com/lesta-1/sc/update/main/l2tp.sh"
+wget -O ssh "https://raw.githubusercontent.com/lesta-1/sc/update/main/ssh.sh"
+wget -O ssssr "https://raw.githubusercontent.com/lesta-1/sc/update/main/ssssr.sh"
+wget -O sstpp "https://raw.githubusercontent.com/lesta-1/sc/update/main/sstpp.sh"
+wget -O trojaan "https://raw.githubusercontent.com/lesta-1/sc/update/main/trojaan.sh"
+wget -O v2raay "https://raw.githubusercontent.com/lesta-1/sc/update/main/v2raay.sh"
+wget -O wgr "https://raw.githubusercontent.com/lesta-1/sc/update/main/wgr.sh"
+wget -O vless "https://raw.githubusercontent.com/lesta-1/sc/update/main/vless.sh"
+wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/update/main/bbr.sh"
 chmod +x bannerku
 chmod +x menu
 chmod +x l2tp
