@@ -19,7 +19,7 @@ SUB_DOMAIN=${sub}.wisang.rpj08.my.id
 CF_ID=daponedan@gmail.com
 CF_KEY=a37c5c796feb440fae136fe32202e2ff06743
 set -euo pipefail
-IP=$(wget -qO- icanhazip.com);
+IP=$(wget -qO- ifconfig.me/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
 ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
      -H "X-Auth-Email: ${CF_ID}" \
