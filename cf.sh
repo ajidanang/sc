@@ -15,7 +15,7 @@ fi
 apt install jq curl -y
 DOMAIN=rpj08.my.id
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-SUB_DOMAIN=${sub}*.wisang.rpj08.my.id
+SUB_DOMAIN=${sub}.wisang.rpj08.my.id
 CF_ID=daponedan@gmail.com
 CF_KEY=a37c5c796feb440fae136fe32202e2ff06743
 set -euo pipefail
