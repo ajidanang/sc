@@ -23,9 +23,6 @@ echo "Start Update"
 # update
 cd /usr/bin
 
-wget -O add-cfh "https://raw.githubusercontent.com/lesta-1/sc/main/add-cfh.sh
-wget -O add-cfd "https://raw.githubusercontent.com/lesta-1/sc/main/add-cfd.sh
-wget -O add-cff "https://raw.githubusercontent.com/lesta-1/sc/main/add-cff.sh
 wget -O add-host "https://raw.githubusercontent.com/lesta-1/sc/main/add-host.sh"
 wget -O about "https://raw.githubusercontent.com/lesta-1/sc/main/about.sh"
 wget -O usernew "https://raw.githubusercontent.com/lesta-1/sc/main/usernew.sh"
@@ -57,9 +54,6 @@ wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
 wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
 wget -O strt "https://raw.githubusercontent.com/lesta-1/sc/main/strt.sh"
 wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
-chmod +x add-cfd
-chmod +x add-cfh
-chmod +x add-cff
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
