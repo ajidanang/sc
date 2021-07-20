@@ -306,6 +306,12 @@ wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
 wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
+wget -O add-cfh "https://raw.githubusercontent.com/lesta-1/sc/main/add-cfh.sh"
+wget -O add-cfd "https://raw.githubusercontent.com/lesta-1/sc/main/add-cfd.sh"
+wget -O add-cff "https://raw.githubusercontent.com/lesta-1/sc/main/add-cff.sh"
+chmod +x add-cfh
+chmod +x add-cfd
+chmod +x add-cff
 chmod +x add-host
 chmod +x menu
 chmod +x usernew
