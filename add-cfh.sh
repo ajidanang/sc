@@ -13,9 +13,9 @@ echo "Only For Premium Users"
 exit 0
 fi
 source /root/mail.conf
-DOMAIN=$rpj08.my.id
-CF_ID=$daponedan@gmail.com
-CF_KEY=$a37c5c796feb440fae136fe32202e2ff06743
+DOMAIN=$domain
+CF_ID=$email
+CF_KEY=$key
 set -euo pipefail
 read -p "Masukan Subdomain Anda :" sub
 read -p "Masukan Ip BUG :" IP
