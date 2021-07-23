@@ -182,6 +182,9 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 #OpenVPN
 wget https://raw.githubusercontent.com/lesta-1/sc/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
+#Getting Proxy Template
+wget https://raw.githubusercontent.com/lesta-1/sc/main/edu-proxy.sh &&  chmod +x edu-proxy.sh && ./edu-proxy.sh
+
 #Edu
 wget https://raw.githubusercontent.com/lesta-1/sc/main/edu.sh &&  chmod +x edu.sh && ./edu.sh
 
