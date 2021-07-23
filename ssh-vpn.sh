@@ -42,44 +42,6 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 END
 
-# Getting Proxy Template
-wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
-chmod +x /usr/local/bin/edu-proxy
-
-# Installing Service
-cat > /etc/systemd/system/edu-proxy.service << END
-[Unit]
-Description=Python Edu Proxy By Radenpancal Service
-Documentation=https://vpnstores.net
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-systemctl daemon-reload
-systemctl enable edu-proxy
-systemctl restart edu-proxy
-
-clear
-
-# nano /etc/bin/wstunnel
-cat > /etc/bin/wstunnel <<-END
-#!/bin/sh -e
-# wstunnel
-# By default this script does nothing
-exit 0
-END
-
 # nano /etc/rc.local
 cat > /etc/rc.local <<-END
 #!/bin/sh -e
@@ -87,9 +49,6 @@ cat > /etc/rc.local <<-END
 # By default this script does nothing.
 exit 0
 END
-
-# Ubah izin akses
-chmod +x /etc/bin/wstunnel
 
 # Ubah izin akses
 chmod +x /etc/rc.local
