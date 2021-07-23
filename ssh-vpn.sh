@@ -223,6 +223,12 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 #OpenVPN
 wget https://raw.githubusercontent.com/lesta-1/sc/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
+#Edu
+wget https://raw.githubusercontent.com/lesta-1/sc/main/edu.sh &&  chmod +x edu.sh && ./edu.sh
+
+#Edu-Tls
+wget https://raw.githubusercontent.com/lesta-1/sc/main/edu-tls.sh &&  chmod +x edu-tls.sh && ./edu-tls.sh
+
 # install fail2ban
 apt -y install fail2ban
 
