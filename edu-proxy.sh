@@ -3,7 +3,7 @@
 # ==============================
 
 # Getting Proxy Template
-wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
+wget -q -O /usr/local/bin/edu-proxy "https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py"
 chmod +x /usr/local/bin/edu-proxy
 
 # Installing Service
@@ -19,7 +19,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy
 Restart=on-failure
 
 [Install]
