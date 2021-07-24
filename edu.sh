@@ -4,7 +4,7 @@
 
 # Getting Proxy Template
 wget -q -O /usr/local/bin/edu-proxy "https://raw.githubusercontent.com/lesta-1/sc/main/edu.py"
-chmod +x /usr/local/bin/edu-proxy
+chmod +x /usr/local/bin/edu
 
 # Installing Service
 cat > /etc/systemd/system/edu-proxy.service << END
@@ -19,7 +19,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2086
+ExecStart=/usr/bin/python -O /usr/local/bin/edu
 Restart=on-failure
 
 [Install]
@@ -27,7 +27,7 @@ WantedBy=multi-user.target
 END
 
 systemctl daemon-reload
-systemctl enable edu-proxy
-systemctl restart edu-proxy
+systemctl enable edu
+systemctl restart edu
 
 clear
