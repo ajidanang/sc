@@ -443,32 +443,7 @@ cat <<EOF > /etc/trojan/config.json
         "ca": ""
     }
 }
-END
-cat > "/etc/trojan-go/config.json" <<-EOF
-{
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 2095,
-    "remote_addr": "127.0.0.1",
-    "remote_port": 2603,
-    "password": [
-        "$uuid"
-    ],
-  "transport_plugin": {
-    "enabled": true,
-    "type": "plaintext"
-  },
-  "websocket": {
-    "enabled": true,
-    "path": "",
-    "host": ""
-  },
-  "router": {
-    "enabled": false
-  }
-}
 EOF
-}
 cat <<EOF> /etc/systemd/system/trojan.service
 [Unit]
 Description=Trojan
@@ -487,26 +462,7 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF > /etc/trojan-go/uuid.txt
-cat <<EOF> /etc/systemd/system/trojan-go.service
-[Unit]
-Description=Trojan
-Documentation=https://trojan-go.github.io/trojan-go/
-
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/trojan-go -c /etc/trojan-go/config.json -l /var/log/trojan-go.log
-Type=simple
-KillMode=process
-Restart=no
-RestartSec=42s
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-cat <<EOF > /etc/trojan-go/uuid.txt
+cat <<EOF > /etc/trojan/uuid.txt
 $uuid
 EOF
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
