@@ -45,6 +45,7 @@ wget https://raw.githubusercontent.com/lesta-1/sc/main/ipsec.sh && chmod +x ipse
 wget https://raw.githubusercontent.com/lesta-1/sc/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 rm -f /root/ssh-vpn.sh
+rm -f /root/weleh.sh
 rm -f /root/sstp.sh
 rm -f /root/wg.sh
 rm -f /root/ss.sh
