@@ -315,6 +315,7 @@ wget -O port-ovpn "https://raw.githubusercontent.com/lesta-1/sc/main/port-ovpn.s
 wget -O port-ssl "https://raw.githubusercontent.com/lesta-1/sc/main/port-ssl.sh"
 wget -O port-wg "https://raw.githubusercontent.com/lesta-1/sc/main/port-wg.sh"
 wget -O port-tr "https://raw.githubusercontent.com/lesta-1/sc/main/port-tr.sh"
+wget -O port-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/port-trgo.sh"
 wget -O port-sstp "https://raw.githubusercontent.com/lesta-1/sc/main/port-sstp.sh"
 wget -O port-squid "https://raw.githubusercontent.com/lesta-1/sc/main/port-squid.sh"
 wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
@@ -328,6 +329,7 @@ wget -O ssh "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssh.sh"
 wget -O ssssr "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssssr.sh"
 wget -O sstpp "https://raw.githubusercontent.com/lesta-1/sc/main/update/sstpp.sh"
 wget -O trojaan "https://raw.githubusercontent.com/lesta-1/sc/main/update/trojaan.sh"
+wget -O add-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/add-trgo.sh"
 wget -O v2raay "https://raw.githubusercontent.com/lesta-1/sc/main/update/v2raay.sh"
 wget -O wgr "https://raw.githubusercontent.com/lesta-1/sc/main/update/wgr.sh"
 wget -O vleess "https://raw.githubusercontent.com/lesta-1/sc/main/update/vleess.sh"
@@ -338,6 +340,9 @@ wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
 wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
 wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
 wget -O autoreboot "https://raw.githubusercontent.com/lesta-1/sc/main/autoreboot.sh"
+wget -O cek-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/cek-trgo.sh"
+wget -O del-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/del-trgo.sh"
+wget -O renew-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/renew-trgo.sh"
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
@@ -360,6 +365,7 @@ chmod +x port-ovpn
 chmod +x port-ssl
 chmod +x port-wg
 chmod +x port-tr
+chmod +x port-trgo
 chmod +x port-sstp
 chmod +x port-squid
 chmod +x port-ws
@@ -373,6 +379,7 @@ chmod +x ssh
 chmod +x ssssr
 chmod +x sstpp
 chmod +x trojaan
+chmod +x add-trgo
 chmod +x v2raay
 chmod +x wgr
 chmod +x vleess
@@ -381,6 +388,9 @@ chmod +x bannerku
 chmod +x cfd
 chmod +x cff
 chmod +x cfh
+chmod +x del-trgo
+chmod +c cek-trgo
+chmod +x renew-trgo
 chmod +x autoreboot
 echo "0 5 * * * root clear-log" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
