@@ -1,5 +1,5 @@
 #!/bin/bash
-# By RPJ WONOSOBO
+#
 # ==================================================
 
 # initializing var
@@ -25,6 +25,33 @@ chmod +x /etc/pam.d/common-password
 
 # go to root
 cd
+# Edu OVPN
+wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/lesta-1/sc/main/cdn-ovpn.py
+chmod +x /usr/local/bin/edu-ovpn
+
+# Installing Service
+cat > /etc/systemd/system/edu-ovpn.service << END
+[Unit]
+Description=Python Edu Ovpn By RpjWisang
+Documentation=https://red-flat.my.id
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-ovpn 2082
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable edu-ovpn
+systemctl restart edu-ovpn
 
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
@@ -70,6 +97,7 @@ apt-get remove --purge exim4 -y
 
 # install wget and curl
 apt -y install wget curl
+apt -y install python
 
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
@@ -81,7 +109,8 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "echo by RADENPANCAL" >> .profile
+echo "echo by RpjWisang" >> .profile
+echo "echo Ketik menu Untuk Melihat Options" >> .profile
 
 # install webserver
 apt -y install nginx
@@ -100,7 +129,7 @@ chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500' /etc/bin/wstunnel
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500' /etc/rc.local
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
@@ -112,13 +141,16 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
 
 # setting port ssh
-sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
+sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 88' /etc/ssh/sshd_config
+sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+/etc/init.d/ssh restart
 
 # install dropbear
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 69 -p 77"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
@@ -155,9 +187,13 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[dropbear]
+[edussl]
 accept = 443
-connect = 127.0.0.1:109
+connect = 700
+
+[dropbear]
+accept = 445
+connect = 127.0.0.1:22
 
 [dropbear]
 accept = 777
@@ -166,6 +202,8 @@ connect = 127.0.0.1:22
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
+
+
 
 END
 
@@ -179,17 +217,17 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
+#install badvpncdn
+wget https://github.com/ambrop72/badvpn/archive/master.zip
+unzip master.zip
+cd badvpn-master
+mkdir build
+cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+sudo make install
+
+END
 #OpenVPN
 wget https://raw.githubusercontent.com/lesta-1/sc/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
-
-#Getting Proxy Template
-wget https://raw.githubusercontent.com/lesta-1/sc/main/edu-proxy.sh &&  chmod +x edu-proxy.sh && ./edu-proxy.sh
-
-#Edu
-wget https://raw.githubusercontent.com/lesta-1/sc/main/edu.sh &&  chmod +x edu.sh && ./edu.sh
-
-#Edu-Tls
-wget https://raw.githubusercontent.com/lesta-1/sc/main/edu-tls.sh &&  chmod +x edu-tls.sh && ./edu-tls.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -222,6 +260,7 @@ echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
 # banner /etc/issue.net
+wget -O /etc/issue.net "https://raw.githubusercontent.com/lesta-1/sc/main/banner.conf"
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
@@ -242,11 +281,15 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
 
+# install python
+apt -y install ruby
+gem install lolcat
+apt -y install figlet
+
 # download script
 cd /usr/bin
 wget -O add-host "https://raw.githubusercontent.com/lesta-1/sc/main/add-host.sh"
 wget -O about "https://raw.githubusercontent.com/lesta-1/sc/main/about.sh"
-wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/lesta-1/sc/main/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/lesta-1/sc/main/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/lesta-1/sc/main/hapus.sh"
@@ -273,17 +316,24 @@ wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
 wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless.sh"
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
-wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
-wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
+wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
+wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/update/menu.sh"
+wget -O l2tp "https://raw.githubusercontent.com/lesta-1/sc/main/update/l2tp.sh"
+wget -O ssh "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssh.sh"
+wget -O ssssr "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssssr.sh"
+wget -O sstpp "https://raw.githubusercontent.com/lesta-1/sc/main/update/sstpp.sh"
+wget -O trojaan "https://raw.githubusercontent.com/lesta-1/sc/main/update/trojaan.sh"
+wget -O v2raay "https://raw.githubusercontent.com/lesta-1/sc/main/update/v2raay.sh"
+wget -O wgr "https://raw.githubusercontent.com/lesta-1/sc/main/update/wgr.sh"
+wget -O vleess "https://raw.githubusercontent.com/lesta-1/sc/main/update/vleess.sh"
+wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/main/update/bbr.sh"
+wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/main/bannerku"
+wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
 wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
 wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
-wget -O running "https://raw.githubusercontent.com/lesta-1/sc/main/running.sh"
-chmod +x running
-chmod +x cfh
-chmod +x cfd
-chmod +x cff
+wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
+wget -O autoreboot "https://raw.githubusercontent.com/lesta-1/sc/main/autoreboot.sh"
 chmod +x add-host
-chmod +x menu
 chmod +x usernew
 chmod +x trial
 chmod +x hapus
@@ -293,26 +343,41 @@ chmod +x cek
 chmod +x restart
 chmod +x speedtest
 chmod +x info
-chmod +x about
-chmod +x autokill
-chmod +x tendang
-chmod +x ceklim
 chmod +x ram
 chmod +x renew
+chmod +x about
+chmod +x autokill
+chmod +x ceklim
+chmod +x tendang
 chmod +x clear-log
 chmod +x change-port
 chmod +x port-ovpn
 chmod +x port-ssl
 chmod +x port-wg
-chmod +x port-sstp
 chmod +x port-tr
+chmod +x port-sstp
 chmod +x port-squid
 chmod +x port-ws
 chmod +x port-vless
 chmod +x wbmn
 chmod +x xp
-chmod +x update
-echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
+chmod +x swap
+chmod +x menu
+chmod +x l2tp
+chmod +x ssh
+chmod +x ssssr
+chmod +x sstpp
+chmod +x trojaan
+chmod +x v2raay
+chmod +x wgr
+chmod +x vleess
+chmod +x bbr
+chmod +x bannerku
+chmod +x cfd
+chmod +x cff
+chmod +x cfh
+chmod +x autoreboot
+echo "0 5 * * * root clear-log" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
 cd
@@ -351,6 +416,12 @@ cd
 rm -f /root/key.pem
 rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
+
+apt install dnsutils jq -y
+apt-get install net-tools -y
+apt-get install tcpdump -y
+apt-get install dsniff -y
+apt install grepcidr -y
 
 # finihsing
 clear
