@@ -443,7 +443,32 @@ cat <<EOF > /etc/trojan/config.json
         "ca": ""
     }
 }
+END
+cat > "/etc/trojan-go/config.json" <<-EOF
+{
+    "run_type": "server",
+    "local_addr": "0.0.0.0",
+    "local_port": 2095,
+    "remote_addr": "127.0.0.1",
+    "remote_port": 2603,
+    "password": [
+        "$uuid"
+    ],
+  "transport_plugin": {
+    "enabled": true,
+    "type": "plaintext"
+  },
+  "websocket": {
+    "enabled": true,
+    "path": "",
+    "host": ""
+  },
+  "router": {
+    "enabled": false
+  }
+}
 EOF
+}
 cat <<EOF> /etc/systemd/system/trojan.service
 [Unit]
 Description=Trojan
@@ -462,17 +487,38 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF > /etc/trojan/uuid.txt
+cat <<EOF > /etc/trojan-go/uuid.txt
+cat <<EOF> /etc/systemd/system/trojan-go.service
+[Unit]
+Description=Trojan
+Documentation=https://trojan-go.github.io/trojan-go/
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/trojan-go -c /etc/trojan-go/config.json -l /var/log/trojan-go.log
+Type=simple
+KillMode=process
+Restart=no
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
+cat <<EOF > /etc/trojan-go/uuid.txt
 $uuid
 EOF
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2095 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2095 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
@@ -488,34 +534,44 @@ systemctl enable v2ray@vnone.service
 systemctl start v2ray@vnone.service
 systemctl restart trojan
 systemctl enable trojan
+systemctl restart trojan-go
+systemctl enable trojan-go
 systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
 wget -O add-ws "https://raw.githubusercontent.com/lesta-1/sc/main/add-ws.sh"
 wget -O add-vless "https://raw.githubusercontent.com/lesta-1/sc/main/add-vless.sh"
 wget -O add-tr "https://raw.githubusercontent.com/lesta-1/sc/main/add-tr.sh"
+wget -O add-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/add-trgo.sh"
 wget -O del-ws "https://raw.githubusercontent.com/lesta-1/sc/main/del-ws.sh"
 wget -O del-vless "https://raw.githubusercontent.com/lesta-1/sc/main/del-vless.sh"
 wget -O del-tr "https://raw.githubusercontent.com/lesta-1/sc/main/del-tr.sh"
+wget -O del-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/del-trgo.sh"
 wget -O cek-ws "https://raw.githubusercontent.com/lesta-1/sc/main/cek-ws.sh"
 wget -O cek-vless "https://raw.githubusercontent.com/lesta-1/sc/main/cek-vless.sh"
 wget -O cek-tr "https://raw.githubusercontent.com/lesta-1/sc/main/cek-tr.sh"
+wget -O cek-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/cek-trgo.sh"
 wget -O renew-ws "https://raw.githubusercontent.com/lesta-1/sc/main/renew-ws.sh"
 wget -O renew-vless "https://raw.githubusercontent.com/lesta-1/sc/main/renew-vless.sh"
 wget -O renew-tr "https://raw.githubusercontent.com/lesta-1/sc/main/renew-tr.sh"
+wget -O renew-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/renew-trgo.sh"
 wget -O certv2ray "https://raw.githubusercontent.com/lesta-1/sc/main/cert.sh"
 chmod +x add-ws
 chmod +x add-vless
 chmod +x add-tr
+chmod +x add-trgo
 chmod +x del-ws
 chmod +x del-vless
 chmod +x del-tr
+chmod +x del-trgo
 chmod +x cek-ws
 chmod +x cek-vless
 chmod +x cek-tr
+chmod +x cek-trgo
 chmod +x renew-ws
 cmod +x renew-vless
 chmod +x renew-tr
+chmod +x renew-trgo
 chmod +x certv2ray
 cd
 rm -f ins-vt.sh
