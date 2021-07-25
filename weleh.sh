@@ -64,9 +64,9 @@ systemctl restart edu-proxyovpn
 clear
 
 # nano /etc/bin/wstunnel
-cat > /etc/bin/ws-stunnel <<-END
+cat > /etc/bin/wstunnel <<-END
 #!/bin/sh -e
-# ws-stunnel
+# wstunnel
 # By default this script does nothing
 exit 0
 END
