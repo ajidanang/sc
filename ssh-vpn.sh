@@ -72,10 +72,10 @@ systemctl restart edu-proxy
 
 clear
 
-# nano /etc/bin/ws-stunnel
-cat > /etc/bin/ws-stunnel <<-END
+# nano /etc/bin/wstunnel
+cat > /etc/bin/wstunnel <<-END
 #!/bin/sh -e
-# ws-stunnel
+# wstunnel
 # By default this script does nothing
 exit 0
 END
