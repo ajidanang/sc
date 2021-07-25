@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# By RPJ WONOSOBO
 # ==================================================
 
 # initializing var
@@ -25,33 +25,6 @@ chmod +x /etc/pam.d/common-password
 
 # go to root
 cd
-# Edu OVPN
-wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/lesta-1/sc/main/cdn-ovpn.py
-chmod +x /usr/local/bin/edu-ovpn
-
-# Installing Service
-cat > /etc/systemd/system/edu-ovpn.service << END
-[Unit]
-Description=Python Edu Ovpn By RADENPANCAL
-Documentation=https://rpj08.my.id
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-ovpn 2082
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-systemctl daemon-reload
-systemctl enable edu-ovpn
-systemctl restart edu-ovpn
 
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
@@ -67,6 +40,44 @@ RemainAfterExit=yes
 SysVStartPriority=99
 [Install]
 WantedBy=multi-user.target
+END
+
+# Getting Proxy Template
+wget -q -O /usr/local/bin/edu-proxy https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templated.py
+chmod +x /usr/local/bin/edu-proxy
+
+# Installing Service
+cat > /etc/systemd/system/edu-proxy.service << END
+[Unit]
+Description=Python Edu Proxy By Radenpancal Service
+Documentation=https://vpnstores.net
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable edu-proxy
+systemctl restart edu-proxy
+
+clear
+
+# nano /etc/bin/ws-stunnel
+cat > /etc/bin/ws-stunnel <<-END
+#!/bin/sh -e
+# ws-stunnel
+# By default this script does nothing
+exit 0
 END
 
 # nano /etc/rc.local
