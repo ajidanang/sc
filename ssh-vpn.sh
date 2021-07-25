@@ -187,13 +187,9 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[edussl]
-accept = 443
-connect = 700
-
 [dropbear]
-accept = 445
-connect = 127.0.0.1:22
+accept = 443
+connect = 127.0.0.1:109
 
 [dropbear]
 accept = 777
@@ -202,11 +198,6 @@ connect = 127.0.0.1:22
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
-
-[openssh]
-accept = 888
-connect = 127.0.0.1:88
-
 
 END
 
