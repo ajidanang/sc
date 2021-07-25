@@ -33,7 +33,7 @@ chmod +x /usr/local/bin/edu-ovpn
 cat > /etc/systemd/system/edu-ovpn.service << END
 [Unit]
 Description=Python Edu Ovpn By RpjWisang
-Documentation=https://red-flat.my.id
+Documentation=https://rpj08.my.id
 After=network.target nss-lookup.target
 
 [Service]
@@ -203,6 +203,9 @@ connect = 127.0.0.1:22
 accept = 442
 connect = 127.0.0.1:1194
 
+[openssh]
+accept = 888
+connect = 127.0.0.1:88
 
 
 END
