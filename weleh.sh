@@ -3,50 +3,70 @@
 
 cd
 
-#Install Script Websocket-SSH Python
-wget -O /usr/local/bin/ws-openssh https://raw.githubusercontent.com/lesta-1/sc/main/openssh-socket.py
-wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/lesta-1/sc/main/dropbear-ws.py
-wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/lesta-1/sc/main/ws-stunnel
-#wget -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/test1/${namafolder}/main/ws-ovpn && chmod +x /usr/local/bin/ws-ovpn
+# Getting Proxy Template Ssl
+wget -q -O /usr/local/bin/edu-proxyssl https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templatedssl.py
+chmod +x /usr/local/bin/edu-proxyssl
 
-#izin permision
-chmod +x /usr/local/bin/ws-openssh
-chmod +x /usr/local/bin/ws-dropbear
-chmod +x /usr/local/bin/ws-stunnel
-#chmod +x /usr/local/bin/ws-ovpn
+# Installing Service
+cat > /etc/systemd/system/edu-proxyssl.service << END
+[Unit]
+Description=Python Edu Ssl Proxy By Radenpancal Service
+Documentation=https://rpj08.my.id
+After=network.target nss-lookup.target
 
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxyssl 109
+Restart=on-failure
 
-#System OpenSSH Websocket-SSH Python
-wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com/lesta-1/sc/main/service-wsopenssh && chmod +x /etc/systemd/system/ws-openssh.service
+[Install]
+WantedBy=multi-user.target
+END
 
-#System Dropbear Websocket-SSH Python
-wget -O /etc/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/lesta-1/sc/main/service-wsdropbear && chmod +x /etc/systemd/system/ws-dropbear.service
-
-#System SSL/TLS Websocket-SSH Python
-wget -O /etc/systemd/system/ws-stunnel.service https://raw.githubusercontent.com/lesta-1/sc/main/ws-stunnel.service && chmod +x /etc/systemd/system/ws-stunnel.service
-
-##System Websocket-OpenVPN Python
-#wget -O /etc/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/${namafolder}/main/ws-ovpn.service && chmod +x /etc/systemd/system/ws-ovpn.service
-
-#restart service
-#
 systemctl daemon-reload
-#Enable & Start & Restart ws-openssh service
-systemctl enable ws-openssh.service
-systemctl start ws-openssh.service
-systemctl restart ws-openssh.service
+systemctl enable edu-proxyssl
+systemctl restart edu-proxyssl
 
-#Enable & Start & Restart ws-dropbear service
-systemctl enable ws-dropbear.service
-systemctl start ws-dropbear.service
-systemctl restart ws-dropbear.service
+clear
 
-#Enable & Start & Restart ws-openssh service
-systemctl enable ws-stunnel.service
-systemctl start ws-stunnel.service
-systemctl restart ws-stunnel.service
+# Getting Proxy Template Ovpn
+wget -q -O /usr/local/bin/edu-proxyovpn https://raw.githubusercontent.com/lesta-1/sc/main/proxy-templatedovpn.py
+chmod +x /usr/local/bin/edu-proxyovpn
 
-#Enable & Start ws-ovpn service
-#systemctl enable ws-ovpn.service
-#systemctl start ws-ovpn.service
-#systemctl restart ws-ovpn.service
+# Installing Service
+cat > /etc/systemd/system/edu-proxyovpn.service << END
+[Unit]
+Description=Python Edu Ovpn Proxy By Radenpancal Service
+Documentation=https://rpj08.my.id
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxyovpn 2086
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable edu-proxyovpn
+systemctl restart edu-proxyovpn
+
+clear
+
+# nano /etc/bin/wstunnel
+cat > /etc/bin/ws-stunnel <<-END
+#!/bin/sh -e
+# ws-stunnel
+# By default this script does nothing
+exit 0
+END
