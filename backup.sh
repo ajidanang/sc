@@ -2,7 +2,7 @@
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
-MYIP=$(wget -qO- ifconfig.me/ip);
+MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
@@ -12,7 +12,13 @@ echo -e "${red}Permission Denied!${NC}";
 echo "Only For Premium Users"
 exit 0
 fi
-IP=$(wget -qO- ifconfig.me/ip);
+source /var/lib/premium-script/ipvps.conf
+if [[ "$IPS" = "" ]]; then
+domain=$(cat /etc/v2ray/domain)
+else
+domain=$IPS
+fi
+IP=$(wget -qO- ipinfo.io/ip);
 date=$(date +"%Y-%m-%d")
 clear
 echo " Enter Your Email To Receive Message"
@@ -44,14 +50,14 @@ url=$(rclone link dr:backup/$IP-$date.zip)
 id=(`echo $url | grep '^https' | cut -d'=' -f2`)
 link="https://drive.google.com/u/4/uc?id=${id}&export=download"
 echo -e "The following is a link to your vps data backup file.
-
+===================
 Your VPS IP $IP
-
+Domain=${domain}
+===================
 $link
-
 If you want to restore data, please enter the link above.
-
-Thank You For Using Our Services" | mail -s "Backup Data" $email
+Thank You For Using Our Services.
+@Copiright 2021 By Endka" | mail -s "Backup Data" $email
 rm -rf /root/backup
 rm -r /root/$IP-$date.zip
 echo "Done"
