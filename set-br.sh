@@ -19,9 +19,9 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user email lestakun@gmail.com
-from email lestakun@gmail.com
-password zglxzsuoyhptwiyf
+user pradiasangindraswari@gmail.com
+from pradiasangindraswari@gmail.com
+password ybkehwuifdgvgiiq
 logfile ~/.msmtp.log
 EOF
 chown -R www-data:www-data /etc/msmtprc
@@ -40,3 +40,4 @@ chmod +x strt
 chmod +x limit-speed
 cd
 rm -f /root/set-br.sh
+
