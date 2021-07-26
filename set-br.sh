@@ -40,4 +40,3 @@ chmod +x strt
 chmod +x limit-speed
 cd
 rm -f /root/set-br.sh
-
