@@ -59,7 +59,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy
 Restart=on-failure
 
 [Install]
@@ -89,7 +89,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxyssl 109
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxyssl
 Restart=on-failure
 
 [Install]
