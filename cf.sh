@@ -13,9 +13,9 @@ echo "Only For Premium Users"
 exit 0
 fi
 apt install jq curl -y
-DOMAIN=rpj08.my.id
+DOMAIN=lestakun.tech
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-SUB_DOMAIN=${sub}.wisang.rpj08.my.id
+SUB_DOMAIN=${sub}.lestakun.tech
 CF_ID=daponedan@gmail.com
 CF_KEY=4f7b99594389851e29b79a9cc695e17776962
 set -euo pipefail
