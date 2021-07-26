@@ -19,7 +19,7 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user email lestakun
+user email lestakun@gmail.com
 from email lestakun@gmail.com
 password zglxzsuoyhptwiyf
 logfile ~/.msmtp.log
