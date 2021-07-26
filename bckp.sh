@@ -52,11 +52,8 @@ echo -e "The following is a link to your vps data backup file.
 Your VPS IP $IP
 Domain=${domain}
 =================
-
 $link
-
 If you want to restore data, please enter the link above.
-
 Thank You For Using Our Services.
 @Copyright 2021 By Endka" | mail -s "Backup Data" $email
 rm -rf /root/backup
