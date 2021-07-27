@@ -50,7 +50,7 @@ chmod +x /usr/local/bin/edu-proxy
 cat > /etc/systemd/system/edu-proxy.service << END
 [Unit]
 Description=Python Edu Proxy By Radenpancal Service
-Documentation=https://vpnstores.net
+Documentation=https://lestakun.tech
 After=network.target nss-lookup.target
 
 [Service]
@@ -59,7 +59,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-proxy 2082
 Restart=on-failure
 
 [Install]
@@ -80,7 +80,7 @@ chmod +x /usr/local/bin/edu-proxyssl
 cat > /etc/systemd/system/edu-proxyssl.service << END
 [Unit]
 Description=Python Edu Ssl Proxy By Radenpancal Service
-Documentation=https://rpj08.my.id
+Documentation=https://lestakun.tech
 After=network.target nss-lookup.target
 
 [Service]
@@ -110,7 +110,7 @@ chmod +x /usr/local/bin/edu-proxyovpn
 cat > /etc/systemd/system/edu-proxyovpn.service << END
 [Unit]
 Description=Python Edu Ovpn Proxy By Radenpancal Service
-Documentation=https://rpj08.my.id
+Documentation=https://lestakun.tech
 After=network.target nss-lookup.target
 
 [Service]
