@@ -383,7 +383,8 @@ wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
 wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless.sh"
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
-wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
+wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update"
+wget -O update1.2 "https://raw.githubusercontent.com/lesta-1/sc/main/update1.2.sh"
 wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
 wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
 wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
@@ -419,6 +420,7 @@ chmod +x port-vless
 chmod +x wbmn
 chmod +x xp
 chmod +x update
+chmod +x update1.2
 chmod +x cfd
 chmod +x cff
 chmod +x cfh
