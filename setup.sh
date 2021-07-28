@@ -31,7 +31,6 @@ echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/lesta-1/sc/main/cf.sh && chmod +x cf.sh && ./cf.sh
 #install ssh ovpn
 wget https://raw.githubusercontent.com/lesta-1/sc/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://raw.githubusercontent.com/lesta-1/sc/main/weleh.sh && chmod +x weleh.sh && screen -S weleh ./weleh.sh
 wget https://raw.githubusercontent.com/lesta-1/sc/main/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
 #install ssr
 wget https://raw.githubusercontent.com/lesta-1/sc/main/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
@@ -45,7 +44,6 @@ wget https://raw.githubusercontent.com/lesta-1/sc/main/ipsec.sh && chmod +x ipse
 wget https://raw.githubusercontent.com/lesta-1/sc/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 rm -f /root/ssh-vpn.sh
-rm -f /root/weleh.sh
 rm -f /root/sstp.sh
 rm -f /root/wg.sh
 rm -f /root/ss.sh
