@@ -384,16 +384,6 @@ wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
 wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
-wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/update/menu.sh"
-wget -O l2tp "https://raw.githubusercontent.com/lesta-1/sc/main/update/l2tp.sh"
-wget -O ssh "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssh.sh"
-wget -O ssssr "https://raw.githubusercontent.com/lesta-1/sc/main/update/ssssr.sh"
-wget -O sstpp "https://raw.githubusercontent.com/lesta-1/sc/main/update/sstpp.sh"
-wget -O trojaan "https://raw.githubusercontent.com/lesta-1/sc/main/update/trojaan.sh"
-wget -O v2raay "https://raw.githubusercontent.com/lesta-1/sc/main/update/v2raay.sh"
-wget -O wgr "https://raw.githubusercontent.com/lesta-1/sc/main/update/wgr.sh"
-wget -O vleess "https://raw.githubusercontent.com/lesta-1/sc/main/update/vleess.sh"
-wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/main/update/bbr.sh"
 wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/main/bannerku"
 wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
 wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
@@ -425,21 +415,11 @@ chmod +x port-tr
 chmod +x port-sstp
 chmod +x port-squid
 chmod +x port-ws
-chmod +x port-vless
 chmod +x wbmn
 chmod +x xp
 chmod +x swap
 chmod +x menu
-chmod +x l2tp
 chmod +x ssh
-chmod +x ssssr
-chmod +x sstpp
-chmod +x trojaan
-chmod +x v2raay
-chmod +x wgr
-chmod +x vleess
-chmod +x bbr
-chmod +x bannerku
 chmod +x cfd
 chmod +x cff
 chmod +x cfh
