@@ -51,9 +51,14 @@ wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
 wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless.sh"
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
-wget -O update "https://raw.githubusercontent.com/lesta-1/sc/main/update.sh"
-wget -O strt "https://raw.githubusercontent.com/lesta-1/sc/main/strt.sh"
 wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
+wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/main/update/bbr.sh"
+wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/main/bannerku"
+wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
+wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
+wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
+wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
+wget -O autoreboot "https://raw.githubusercontent.com/lesta-1/sc/main/autoreboot.sh"
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
@@ -64,27 +69,33 @@ chmod +x cek
 chmod +x restart
 chmod +x speedtest
 chmod +x info
-chmod +x about
-chmod +x autokill
-chmod +x tendang
-chmod +x ceklim
 chmod +x ram
 chmod +x renew
+chmod +x about
+chmod +x autokill
+chmod +x ceklim
+chmod +x tendang
 chmod +x clear-log
 chmod +x change-port
 chmod +x port-ovpn
 chmod +x port-ssl
 chmod +x port-wg
-chmod +x port-sstp
 chmod +x port-tr
+chmod +x port-sstp
 chmod +x port-squid
 chmod +x port-ws
-chmod +x port-vless
 chmod +x wbmn
 chmod +x xp
-chmod +x update
-chmod +x strt
 chmod +x swap
+chmod +x menu
+chmod +x l2tp
+chmod +x ssh
+chmod +x bbr
+chmod +x bannerku
+chmod +x cfd
+chmod +x cff
+chmod +x cfh
+chmod +x autoreboot
 wget -O /usr/bin/ssr https://https://raw.githubusercontent.com/lesta-1/sc/main/ssrmu.sh && chmod +x /usr/bin/ssr
 wget -O /usr/bin/add-ssr https://https://raw.githubusercontent.com/lesta-1/sc/main/add-ssr.sh && chmod +x /usr/bin/add-ssr
 wget -O /usr/bin/del-ssr https://https://raw.githubusercontent.com/lesta-1/sc/main/del-ssr.sh && chmod +x /usr/bin/del-ssr
