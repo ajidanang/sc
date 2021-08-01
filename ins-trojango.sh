@@ -20,24 +20,24 @@ touch /etc/trojan-go/akun.conf
 
 # Installing Trojan Go
 mkdir -p /etc/trojan-go/
-chmod 755 /etc/trojan-go/
+chmod 777 /etc/trojan-go/
 touch /etc/trojan-go/trojan-go.pid
-wget -O /usr/local/bin/trojan-go https://github.com/bokir-tampan/ranjau-darate/raw/main/trojan-go
-wget -O /usr/local/bin/geoip.dat https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/geoip.dat
-wget -O /usr/local/bin/geosite.dat https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/geosite.dat
-chmod +x /usr/local/bin/trojan-go
+wget -O /etc/trojan-go/trojan-go https://github.com/bokir-tampan/ranjau-darate/raw/main/trojan-go
+wget -O /etc/trojan-go/geoip.dat https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/geoip.dat
+wget -O /etc/trojan-go/geosite.dat https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/geosite.dat
+chmod +x /etc/trojan-go/trojan-go
 
 # Service
 cat > /etc/systemd/system/trojan-go.service << END
 [Unit]
-Description=Trojan-Go - An unidentifiable mechanism that helps you bypass GFW
+Description=Trojan-Go 
 Documentation=https://p4gefau1t.github.io/trojan-go/
 After=network.target nss-lookup.target
 
 [Service]
 User=root
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/trojan-go -config /etc/trojan-go/config.json
+ExecStart=/etc/trojan-go/trojan-go -config /etc/trojan-go/config.json
 Restart=on-failure
 RestartSec=10s
 LimitNOFILE=infinity
@@ -49,37 +49,117 @@ END
 # Config
 cat > /etc/trojan-go/config.json << END
 {
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 2096, # Port Untuk Trojan-Go
-    "remote_addr": "127.0.0.1",
-    "remote_port": 81, # Port Nginx / Apache ( Wajib Ada )
-    "password": [
-        "BokirTampan" # Semua Password Client
+  "run_type": "server",
+  "local_addr": "0.0.0.0",
+  "local_port": 443,
+  "remote_addr": "127.0.0.1",
+  "remote_port": 81,
+  "log_level": 1,
+  "log_file": "/var/log/trojan-go.log",
+  "password": [
+    "RPJ_WISANG"
+  ],
+  "disable_http_check": true,
+  "udp_timeout": 60,
+  "ssl": {
+    "verify": true,
+    "verify_hostname": true,
+    "cert": "/etc/v2ray/v2ray.crt",
+    "key": "/etc/v2ray/v2ray.key",
+    "key_password": "",
+    "cipher": "",
+    "curves": "",
+    "prefer_server_cipher": true,
+    "sni": "$domain",
+    "alpn": [
+      "http/1.1"
     ],
+    "session_ticket": true,
+    "reuse_session": true,
+    "plain_http_response": "",
+    "fallback_addr": "127.0.0.1",
+    "fallback_port": 2095,
+    "fingerprint": ""
+  },
+  "tcp": {
+    "no_delay": true,
+    "keep_alive": true,
+    "prefer_ipv4": false
+  },
+  "mux": {
+    "enabled": true,
+    "concurrency": 64,
+    "idle_timeout": 60
+  },
+  "router": {
+    "enabled": false,
+    "bypass": [],
+    "proxy": [],
+    "block": [],
+    "default_policy": "proxy",
+    "domain_strategy": "as_is",
+    "geoip": "/usr/local/bin/geoip.dat",
+    "geosite": "/usr/local/bin/geosite.dat"
+  },
+  "websocket": {
+    "enabled": true,
+    "path": "/RPJ_WISANG",
+    "host": "$domain"
+  },
+  "shadowsocks": {
+    "enabled": false,
+    "method": "AES-128-GCM",
+    "password": ""
+  },
+  "transport_plugin": {
+    "enabled": false,
+    "type": "",
+    "command": "",
+    "plugin_option": "",
+    "arg": [],
+    "env": []
+  },
+  "forward_proxy": {
+    "enabled": false,
+    "proxy_addr": "",
+    "proxy_port": 0,
+    "username": "",
+    "password": ""
+  },
+  "mysql": {
+    "enabled": false,
+    "server_addr": "localhost",
+    "server_port": 3306,
+    "database": "",
+    "username": "",
+    "password": "",
+    "check_rate": 60
+  },
+  "api": {
+    "enabled": false,
+    "api_addr": "",
+    "api_port": 0,
     "ssl": {
-        "cert": "/etc/v2ray/cert.crt", # Path Certificate
-        "key": "/etc/v2ray/cert.key", # Path Certificate Key
-        "sni": "$domain" # Domain Name ( Harus Sama Dengan Cert )
-    },
-    "router": {
-        "enabled": true,
-        "block": [
-            "geoip:private"
-        ],
-        "geoip": "/usr/local/bin/geoip.dat",
-        "geosite": "/usr/local/bin/geosite.dat"
+      "enabled": false,
+      "key": "",
+      "cert": "",
+      "verify_client": false,
+      "client_cert": []
     }
+  }
 }
 END
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2096 -j ACCEPT
-iptables-save > /etc/iptables.up.rules
-iptables-restore -t < /etc/iptables.up.rules
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+ip6tables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+ip6tables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables-save >/etc/iptables.rules.v4
+ip6tables-save >/etc/iptables.rules.v6
 netfilter-persistent save
 netfilter-persistent reload
+systemctl daemon-reload
 
 # Starting
 systemctl daemon-reload
-systemctl enable trojan-go
+systemctl enable trojan-go.service
 systemctl start trojan-go
