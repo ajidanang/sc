@@ -22,6 +22,10 @@ echo "WhatsApp wa.me/6285601438924"
 rm -f setup.sh
 exit 0
 fi
+if [ -f "/etc/v2ray/domain" ]; then
+echo "Script Already Installed"
+exit 0
+fi
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/lesta-1/sc/main/cf.sh && chmod +x cf.sh && ./cf.sh
@@ -35,7 +39,7 @@ wget https://raw.githubusercontent.com/lesta-1/sc/main/sodosok.sh && chmod +x so
 wget https://raw.githubusercontent.com/lesta-1/sc/main/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
 #install v2ray
 wget https://raw.githubusercontent.com/lesta-1/sc/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
-#wget https://raw.githubusercontent.com/lesta-1/sc/main/ins-trojango.sh && chmod +x ins-trojango.sh && screen -S Trojan-go ./ins-trojango.sh
+wget https://raw.githubusercontent.com/lesta-1/sc/main/ins-trojango.sh && chmod +x ins-trojango.sh && screen -S Trojan-go ./ins-trojango.sh
 #install L2TP
 wget https://raw.githubusercontent.com/lesta-1/sc/main/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
 wget https://raw.githubusercontent.com/lesta-1/sc/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
@@ -81,7 +85,7 @@ echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
 echo "   - OpenVPN                 : TCP 1194, UDP 2200, SSL 442"  | tee -a log-install.txt
 echo "   - Stunnel4                : 222, 777"  | tee -a log-install.txt
 echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
-echo "   - Squid Proxy             : 3128, 8080(limit to IP Server)"  | tee -a log-install.txt
+echo "   - Squid Proxy             : 3128, 8080 (limit to IP Server)"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 81"  | tee -a log-install.txt
 echo "   - Wireguard               : 7070"  | tee -a log-install.txt
@@ -116,10 +120,11 @@ echo "   - Dev/Main                : RPJ WONOSOBO"  | tee -a log-install.txt
 echo "   - Telegram                : T.me/RPJ258"  | tee -a log-install.txt
 echo "   - Instagram               : @Daponedan"  | tee -a log-install.txt
 echo "   - Whatsapp                : 6285601438924"  | tee -a log-install.txt
-echo "   - Facebook                : https://www.facebook.com/dapon" | tee -a log-install.txt
+echo "   - Facebook                : https://www.facebook.com/" | tee -a log-install.txt
 echo "------------------Script Created By Chock Fighter Academy-----------------" | tee -a log-install.txt
 echo ""
 echo " Reboot 15 Sec"
 sleep 15
 rm -f setup.sh
 reboot
+
