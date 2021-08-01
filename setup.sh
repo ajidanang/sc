@@ -20,8 +20,6 @@ echo "Please Contact Admin"
 echo "Telegram t.me/RPJ258"
 echo "WhatsApp wa.me/6285601438924"
 rm -f setup.sh
-exit 0
-fi
 
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
