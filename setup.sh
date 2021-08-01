@@ -22,7 +22,6 @@ echo "WhatsApp wa.me/6285601438924"
 rm -f setup.sh
 exit 0
 fi
-if [ -f "/etc/v2ray/domain" ]; then
 
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
