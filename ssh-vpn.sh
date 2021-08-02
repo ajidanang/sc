@@ -357,6 +357,7 @@ apt -y install figlet
 cd /usr/bin
 wget -O add-host "https://raw.githubusercontent.com/lesta-1/sc/main/add-host.sh"
 wget -O about "https://raw.githubusercontent.com/lesta-1/sc/main/about.sh"
+wget -O menu "https://raw.githubusercontent.com/lesta-1/sc/main/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/lesta-1/sc/main/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/lesta-1/sc/main/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/lesta-1/sc/main/hapus.sh"
@@ -383,14 +384,15 @@ wget -O port-ws "https://raw.githubusercontent.com/lesta-1/sc/main/port-ws.sh"
 wget -O port-vless "https://raw.githubusercontent.com/lesta-1/sc/main/port-vless.sh"
 wget -O wbmn "https://raw.githubusercontent.com/lesta-1/sc/main/webmin.sh"
 wget -O xp "https://raw.githubusercontent.com/lesta-1/sc/main/xp.sh"
-wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
-wget -O bannerku "https://raw.githubusercontent.com/lesta-1/sc/main/bannerku"
-wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
+wget -O kernel-updt "https://raw.githubusercontent.com/lesta-1/sc/main/kernel-update.sh"
 wget -O cfd "https://raw.githubusercontent.com/lesta-1/sc/main/cfd.sh"
 wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
 wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
 wget -O autoreboot "https://raw.githubusercontent.com/lesta-1/sc/main/autoreboot.sh"
+wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
+wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
 chmod +x add-host
+chmod +x menu
 chmod +x usernew
 chmod +x trial
 chmod +x hapus
@@ -400,31 +402,31 @@ chmod +x cek
 chmod +x restart
 chmod +x speedtest
 chmod +x info
-chmod +x ram
-chmod +x renew
 chmod +x about
 chmod +x autokill
-chmod +x ceklim
 chmod +x tendang
+chmod +x ceklim
+chmod +x ram
+chmod +x renew
 chmod +x clear-log
 chmod +x change-port
 chmod +x port-ovpn
 chmod +x port-ssl
 chmod +x port-wg
-chmod +x port-tr
 chmod +x port-sstp
+chmod +x port-tr
 chmod +x port-squid
 chmod +x port-ws
+chmod +x port-vless
 chmod +x wbmn
 chmod +x xp
-chmod +x swap
-chmod +x menu
-chmod +x ssh
+chmod +x kernel-updt
 chmod +x cfd
 chmod +x cff
 chmod +x cfh
 chmod +x autoreboot
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
+echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
 cd
 apt autoclean -y
