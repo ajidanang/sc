@@ -271,10 +271,6 @@ connect = 127.0.0.1:1194
 accept = 445
 connect = 700
 
-[trojango]
-accept = 443
-connect = 127.0.0.1:81
-
 END
 
 # make a certificate
