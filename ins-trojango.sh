@@ -8,6 +8,11 @@ apt install wget -y
 apt install screen -y
 apt install curl -y
 apt install zip
+
+cd /usr/bin
+wget -O add-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/add-trgo.sh"
+chmod +x add-trgo
+
 # Domain 
 domain=$(cat /etc/v2ray/domain)
 
