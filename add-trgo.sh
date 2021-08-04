@@ -36,7 +36,7 @@ sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
 systemctl restart trojan-go
-trojangolink="trojan-go://trojan-go@${domain}:${trojango}/?sni=${domain}&type=ws&host=${domain}&path=/trojan-go&encryption=none#${user}"
+trojangolink="trojan-go://trojan-go@${domain}:${trojango}/?sni=${domain}&type=ws&host=${domain}&path=/RPJ&encryption=none#${user}"
 clear
 echo -e "---------------TROJAN-GO ACCOUNT-------------"
 echo -e "Remarks        = ${user}"
