@@ -11,8 +11,9 @@ apt install zip
 
 cd /usr/bin
 wget -O add-trgo "https://raw.githubusercontent.com/lesta-1/sc/main/add-trgo.sh"
+wget -O bbr "https://raw.githubusercontent.com/lesta-1/sc/main/bbr.sh"
 chmod +x add-trgo
-
+chmod +x bbr
 # Domain 
 domain=$(cat /etc/v2ray/domain)
 
