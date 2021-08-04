@@ -268,7 +268,7 @@ accept = 442
 connect = 127.0.0.1:1194
 
 [wsssl]
-accept = 999
+accept = 2083
 connect = 700
 
 END
