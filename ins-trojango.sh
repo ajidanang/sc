@@ -89,7 +89,7 @@ cat <<EOF > /etc/trojan-go/config.json
   },
   "websocket": {
     "enabled": true,
-    "path": "/Endka",
+    "path": "/RPJ",
     "host": "$domain"
   },
   "shadowsocks": {
