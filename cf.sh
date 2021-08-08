@@ -13,9 +13,9 @@ echo "Only For Premium Users"
 exit 0
 fi
 apt install jq curl -y
-DOMAIN=rpj.wisang.tech
+DOMAIN=rpj-wisang.tech
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-SUB_DOMAIN=${sub}.rpj.wisang.tech
+SUB_DOMAIN=${sub}.rpj-wisang.tech
 CF_ID=jayston.kingmichael@fineloans.org
 CF_KEY=e971c9fa13e1604f615e28c7bdd2d6427e329
 set -euo pipefail
