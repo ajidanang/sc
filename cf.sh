@@ -13,11 +13,11 @@ echo "Only For Premium Users"
 exit 0
 fi
 apt install jq curl -y
-DOMAIN=lestakun.tech
+DOMAIN=rpj.wisang.tech
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-SUB_DOMAIN=${sub}.lestakun.tech
-CF_ID=daponedan@gmail.com
-CF_KEY=4f7b99594389851e29b79a9cc695e17776962
+SUB_DOMAIN=${sub}.rpj.wisang.tech
+CF_ID=jayston.kingmichael@fineloans.org
+CF_KEY=e971c9fa13e1604f615e28c7bdd2d6427e329
 set -euo pipefail
 IP=$(wget -qO- ifconfig.me/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
