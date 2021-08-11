@@ -10,6 +10,22 @@ fi
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
+MYIP=$(wget -qO- ifconfig.me/ip);
+IZIN=$( curl http://akses.rpj08.my.id:81/akses | grep $MYIP )
+if [ $MYIP = $IZIN ]; then
+echo -e "${green}Permission Accepted...${NC}"
+else
+echo -e "${red}Permission Denied!${NC}";
+echo "Please Contact Admin"
+echo "Telegram t.me/RPJ258"
+echo "WhatsApp wa.me/6285601438924"
+rm -f setup.sh
+exit 0
+fi
+if [ -f "/etc/v2ray/domain" ]; then
+echo "Script Already Installed"
+exit 0
+fi
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/lesta-1/sc/main/cf.sh && chmod +x cf.sh && ./cf.sh
