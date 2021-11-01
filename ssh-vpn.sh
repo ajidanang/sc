@@ -390,7 +390,8 @@ wget -O cff "https://raw.githubusercontent.com/lesta-1/sc/main/cff.sh"
 wget -O cfh "https://raw.githubusercontent.com/lesta-1/sc/main/cfh.sh"
 wget -O autoreboot "https://raw.githubusercontent.com/lesta-1/sc/main/autoreboot.sh"
 wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
-wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit
+wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit"
+wget -O running "https://raw.githubusercontent.com/lesta-1/sc/main/running.sh"
 chmod +x add-host
 chmod +x menu
 chmod +x usernew
@@ -425,6 +426,7 @@ chmod +x cfd
 chmod +x cff
 chmod +x cfh
 chmod +x autoreboot
+chmod +x running
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
