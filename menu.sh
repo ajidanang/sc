@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 echo -e ""
-echo -e "==========================-WISANG-RPJ-=========================="
+echo -e "========================DAPON-WISANG-RPJ-======================="
 echo -e "* menu         : List of Main Commands"
 echo -e ""
 echo -e "=========================-SSH & OpenVPN-========================"
