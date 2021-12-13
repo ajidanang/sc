@@ -393,7 +393,7 @@ wget -O swap "https://raw.githubusercontent.com/lesta-1/sc/main/swapkvm.sh"
 wget -O /usr/bin/user-limit https://raw.githubusercontent.com/lesta-1/sc/main/user-limit.sh && chmod +x /usr/bin/user-limit"
 wget -O running "https://raw.githubusercontent.com/lesta-1/sc/main/running.sh"
 chmod +x add-host
-chmod +x menu
+chmod +x about
 chmod +x usernew
 chmod +x trial
 chmod +x hapus
@@ -403,7 +403,7 @@ chmod +x cek
 chmod +x restart
 chmod +x speedtest
 chmod +x info
-chmod +x about
+chmod +x menu
 chmod +x autokill
 chmod +x tendang
 chmod +x ceklim
